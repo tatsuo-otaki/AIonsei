@@ -140,7 +140,8 @@ class App(tk.Tk):
         path = os.path.join(self.wav_dir, fname)
         try:
             sf.write(path, self.current_audio, SAMPLE_RATE, subtype='PCM_16')
-            row = f"{fname}|{self.lines[self.idx].replace('\n',' ').strip()}\n"
+            text_line = self.lines[self.idx].replace("\n", " ").strip()
+            row = f"{fname}|{text_line}\n"
             exists = False
             if os.path.exists(self.meta_path):
                 with open(self.meta_path, 'r', encoding='utf-8') as fr:
